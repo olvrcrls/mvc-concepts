@@ -8,6 +8,7 @@
 		<table class="table table-condensed" id="inventory-table">
 			<thead>
 				<th>Item</th>
+				<th>Branch</th>
 				<th>Stock</th>
 				<th>Price</th>
 				<th colspan="2">Actions</th>
@@ -15,6 +16,7 @@
 		<% @inventories.each do |inventory| %>
 			<tr>
 				<td><%= inventory.product.name %></td>
+				<td><%= inventory.branch.name %></td>
 				<td><%= inventory.stock %></td>
 				<td><%= inventory.price %></td>
 				<td><%= link_to "edit", edit_product_inventory_path(inventory.product.id, inventory.id), class: "text-warning" %></td>

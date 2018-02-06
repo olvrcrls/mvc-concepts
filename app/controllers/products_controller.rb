@@ -8,8 +8,8 @@ class ProductsController < ApplicationController
 
 	def new
 		@product = current_user.products.build
-		@categories = category_list
-		@brands = brand_list
+		# @categories = category_list
+		# @brands = brand_list
 	end
 
 	def create
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
 		@product.category_id = params[:category_id]
 		@product.brand_id = params[:brand_id]
 		if @product.update(product_params)
-			redirect_to products_path(product)
+			redirect_to products_path(@product)
 		else
 			render 'edit'
 		end

@@ -1,7 +1,8 @@
 class Category < ApplicationRecord
 	has_many :products
 
-	validates :name, :presence => true
+	validates_presence_of :name
+	validates_uniqueness_of :name
 	
 	extend FriendlyId
 	friendly_id :name, use: :slugged

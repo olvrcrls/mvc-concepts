@@ -16,10 +16,10 @@
 	<%= form.input :name, class: "form-control" %>
 	<%= form.input :description, class: "form-control" %>
 	<%= form.label "Category" %>
-	<%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a Category", class: "form-control") %>
+	<%= select_tag(:category_id, options_for_select(Category.all.map{ |category| [category.name, category.id] }), :prompt => "Select a Category", class: "form-control") %>
 	<br>
 	<%= form.label "Brand" %>
-	<%= select_tag(:brand_id, options_for_select(@brands), :prompt => "Select a Brand", class: "form-control") %>
+	<%= select_tag(:brand_id, options_for_select(Brand.all.map{ |brand| [brand.name, brand.id] }), :prompt => "Select a Brand", class: "form-control") %>
 	<br>
 	<%= form.button :submit, class: "btn btn-md btn-success" %>
 <% end %>

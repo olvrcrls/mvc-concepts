@@ -3,9 +3,10 @@ class Product < ApplicationRecord
 	belongs_to :brand
 	has_many :inventories
 
-	validates :name, :presence => true
-	validates :brand_id, :presence => true
-	validates :category_id, :presence => true
+	validates_presence_of :name, :brand_id, :category_id, :description
+	validates_uniqueness_of :name
+	# validates :brand_id, :presence => true
+	# validates :category_id, :presence => true
 
 	extend FriendlyId
 	friendly_id :name, use: :slugged
