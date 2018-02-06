@@ -1,0 +1,24 @@
+<%= simple_form_for @inventory do |form| %>
+	<% if @inventory.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@inventory.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @inventory.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.label "Branch" %>
+  <%= select_tag(:branch_id, options_for_select(@branches), :prompt => "Select a Branch", class: "form-control") %>
+  <br>
+  <%= form.label "Product" %>
+  <%= select_tag(:product_id, options_for_select(@products), :prompt => "Select a Product", class: "form-control") %>
+  <br>
+  <%= form.input :stock %>
+  <%= form.input :price, { type: "number", step: "0.01" } %>
+  <%= form.button :submit, class: "btn btn-md btn-success" %>
+<% end %>

@@ -1,0 +1,31 @@
+<div class="row">
+	<h1 class="page-header">Product Inventory</h1>
+	<%= link_to "Create Product Inventory", new_inventory_path, class: "btn btn-md btn-success" %>
+</div>
+<br>
+<div class="row">
+	<% unless @inventories.blank? %>
+		<table class="table table-condensed" id="inventory-table">
+			<thead>
+				<th>Item</th>
+				<th>Stock</th>
+				<th>Price</th>
+				<th colspan="2">Actions</th>
+			</thead>
+		<% @inventories.each do |inventory| %>
+			<tr>
+				<td><%= inventory.product.name %></td>
+				<td><%= inventory.stock %></td>
+				<td><%= inventory.price %></td>
+				<td><%= link_to "edit", edit_product_inventory_path(inventory.product.id, inventory.id), class: "text-warning" %></td>
+				<td><%= link_to "delete", product_inventory_path(inventory.product.id, inventory.id), method: :delete, data: { confirm: "Do you want to delete this inventory?" },class: "text-danger" %>
+				</td>
+			</tr>
+		<% end %>
+		</table>
+	<% else %>
+	<div class="well well-sm">
+		There are no product inventories at the moment.
+	</div>
+	<% end %>
+</div>

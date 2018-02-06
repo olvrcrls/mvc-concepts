@@ -1,0 +1,30 @@
+<div class="row">
+	<h1 class="page-header">List of Categories</h1>
+	<%= link_to "Create Category", new_category_path, { class: "btn btn-md btn-success" } %>
+</div>
+<br>
+<div class="row">
+	<table class="table table-condensed" id="categories-table">
+		<thead>
+			<tr>
+				<td>Category Name</td>
+				<td colspan="2">Actions</td>
+			</tr>
+		</thead>
+		<tbody>
+		<% @categories.each do |category| %>
+			<tr>
+				<td>
+					<%= category.name %>
+				</td>
+				<td>
+					<%= link_to "Edit", edit_category_path(category) %>
+				</td>
+				<td>
+					<%= link_to "Delete", category_path(category), method: :delete %>
+				</td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+</div>

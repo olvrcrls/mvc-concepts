@@ -1,0 +1,32 @@
+<div class="row">
+	<h1 class="page-header">
+		Branches
+	</h1>
+	<%= link_to "Create Branch", new_branch_path, class: "btn btn-md btn-success" %>
+</div><!--/.row-->
+<br>
+<div class="row">
+	<% unless @branches.blank? %>
+	<table class="table table-condensed">
+		<thead>
+			<th>Name</th>
+			<th>City</th>
+			<th colspan="2">Actions</th>
+		</thead>
+		<tbody>
+			<% @branches.each do |branch| %>
+			<tr>
+				<td><%= branch.name %></td>
+				<td><%= branch.city %></td>
+				<td><%= link_to "edit", edit_branch_path(branch), class: "text-warning" %></td>
+				<td><%= link_to "delete", branch_path(branch), method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger"%></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<% else %>
+		<div class="well well-sm">
+			There are no branches created, yet.
+		</div>
+	<% end %>
+</div>

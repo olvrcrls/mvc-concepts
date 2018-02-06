@@ -1,0 +1,32 @@
+<div class="row">
+	<h1 class="page-header">Edit <%= @product.name %></h1>
+	<%= link_to "Return", products_path, class: "btn btn-md btn-default" %>
+</div>
+<br>
+<div class="row">
+<%= simple_form_for @product do |form| %>
+
+ <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@product.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<%= form.input :name, class: "form-control" %>
+	<%= form.input :description, class: "form-control" %>
+	<%= form.label "Category" %>
+	<%= form.select :category_id, @categories, :prompt => "Select a brand", class: "form-control" %>
+	<br>
+	<%= form.label "Brand" %>
+	<%= form.select :category_id, @brands, :prompt => "Select a brand", class: "form-control" %>
+	<br>
+	<%= form.button :submit, class: "btn btn-md btn-success" %>
+<% end %>
+</div>

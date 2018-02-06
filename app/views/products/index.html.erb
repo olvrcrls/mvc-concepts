@@ -1,0 +1,32 @@
+<div class="row">
+	<h1 class="page-header">Products</h1>
+	<%= link_to "Create New Product", new_product_path, class: "btn btn-md btn-success" %>
+</div>
+<br>
+<div class="row">
+	<% unless @products.blank? %>
+	<table class="table table-condensed">
+		<thead>
+			<th>Product Name</th>
+			<th>Brand</th>
+			<th>Category</th>
+			<th colspan="2">Actions</th>
+		</thead>
+		<tbody>
+		
+			<% @products.each do |product| %>
+				<tr>
+					<td><%= product.name %></td>
+					<td><%= product.brand.name %></td>
+					<td><%= product.category.name %></td>
+					<td><%= link_to "edit", edit_product_path(product), class: "text-warning" %></td>
+					<td><%= link_to "delete", product_path(product), method: :delete, data: { confirm: "Are you sure?" },class: "text-danger" %></td>
+				</tr>
+			<% end %>
+
+		</tbody>
+	</table>
+	<% else %>
+	<h2>There are no products created yet..</h2>
+	<% end %>
+</div><!--/.row-->

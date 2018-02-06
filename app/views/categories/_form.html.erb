@@ -1,0 +1,6 @@
+<%= simple_form_for @category do |form| %>
+	<%= form.input :name, label: "Name" %>
+	<%= form.button :submit, { class: "btn btn-md btn-success" } %>
+
+	<%= link_to "Return", categories_path, { class: "btn btn-md btn-default" } %>
+<% end %>
